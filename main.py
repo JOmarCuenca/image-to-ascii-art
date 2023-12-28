@@ -40,7 +40,8 @@ def image_to_ascii(image: Image, size_ratio=1, colorful=False):
             for x in range(new_width):
                 pixel = image.getpixel((x, y))
                 grayscale = sum(pixel) // 3
-                ascii_image += ascii_chars[min(grayscale // ceil(255 / len(ascii_chars)), len(ascii_chars) - 1)]
+                ascii_image += ascii_chars[min(grayscale // ceil(
+                    255 / len(ascii_chars)), len(ascii_chars) - 1)]
                 pbar.update(1)
             ascii_image += "\n"
     return ascii_image
