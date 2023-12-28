@@ -1,15 +1,16 @@
-import argparse
 from dataclasses import dataclass
-
+import argparse
 
 @dataclass(frozen=True, repr=True, eq=True)
 class Args:
+    """Class representing the command line arguments."""
     image_path: str
     image_size: int
     output_path_inner: str | None
     colorful: bool = False
 
     def __str__(self) -> str:
+        """Return a string representation of the Args object."""
         return str(
             {
                 'image_path': self.image_path,
@@ -20,13 +21,13 @@ class Args:
         )
 
     def get_modified_image_path(self) -> str:
-        # Modify the image_path to have a different output name with .ascii_art extension
-        output_name = self.image_path.split(
-            "/")[-1].rsplit(".", 1)[0] + ".ascii_art"
+        """Modify the image_path to have a different output name with .ascii_art extension."""
+        output_name = self.image_path.split("/")[-1].rsplit(".", 1)[0] + ".ascii_art"
         return self.image_path.replace(self.image_path.split("/")[-1], output_name)
 
     @property
     def output_path(self) -> str:
+        """Return the output path based on the provided arguments."""
         if self.output_path_inner:
             return self.output_path_inner
         
@@ -37,7 +38,9 @@ class Args:
 
         return name
 
+    @staticmethod
     def parseArgs():
+        """Parse the command line arguments and return an Args object."""
         parser = argparse.ArgumentParser(
             prog='Image ASCII Art Generator',
             description='This program takes an image file, resizes it using the Pillow library, and outputs the result to a file.',
