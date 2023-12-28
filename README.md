@@ -9,12 +9,14 @@ This is a Python application that converts an image into ASCII art. It takes an 
 git clone https://github.com/yourusername/imagetoascii.git
 ```
 
-1. Navigate to the project directory:
+2. Navigate to the project directory:
 ```sh
 cd imagetoascii
+# I recommend creating an environment for this
+python3 -m venv env && source env/bin/activate
 ```
 
-1. Install the required Python packages:
+3. Install the required Python packages:
 ```sh
 pip install -r requirements.txt
 ```
@@ -24,7 +26,7 @@ pip install -r requirements.txt
 You can run the program with the following command:
 
 ```sh
-python main.py <image_path> <image_size> [--colorful] [output_path]
+python3 main.py <image_path> <image_size> [--colorful] [output_path]
 ```
 
 - `image_path`: Path to the image file.
@@ -34,13 +36,13 @@ python main.py <image_path> <image_size> [--colorful] [output_path]
 
 ## Examples
 
-Convert a grayscale image:
+Convert image with grayscale characters:
 
 ```sh
 python main.py assets/examples/toothless.png 10
 ```
 
-Convert a colorful image:
+Convert image with colorful characters:
 
 ```sh
 python main.py assets/examples/toothless.png 10 --colorful
